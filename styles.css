@@ -758,11 +758,35 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .cs-metrics { grid-template-columns: 1fr; }
   .cs-metrics .m { border-right: 0; border-bottom: 1px solid var(--line); }
   .cs-metrics .m:last-child { border-bottom: 0; }
-  .montage { grid-auto-rows: 80px; gap: 8px; }
   .cs-gallery { grid-auto-rows: 80px; }
-  .nav-links { gap: 0; }
-  .nav-links button { padding: 6px 8px; font-size: 10px; }
   .hero-meta { grid-template-columns: 1fr; text-align: left; }
   .hero-meta .right { text-align: left; }
   .hero-meta .seal { display: none; }
+
+  /* Nav — smaller logo, bigger links, hide theme toggle */
+  .nav-inner { grid-template-columns: 1fr auto; }
+  .nav-logo { font-size: 16px; }
+  .nav-logo .mark { width: 20px; height: 20px; font-size: 11px; }
+  .nav-right { display: none; }
+  .nav-links { gap: 12px; justify-self: end; }
+  .nav-links button { padding: 6px 0; font-size: 15px; }
+
+  /* Photo montages — 2 columns */
+  .montage {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+    gap: 8px;
+  }
+  .montage .c1, .montage .c2, .montage .c3,
+  .montage .c4, .montage .c5, .montage .c6 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Footer — stack copyright above tagline */
+  .footnote {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
 }
