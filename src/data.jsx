@@ -38,16 +38,16 @@ const WORK = [
   {
     id: "flex",
     num: "00",
-    tags: ["FLEX", "GROWTH", "CRO"],
-    title: "Currently at Flex,",
-    titleEm: "leading design on Rent.",
-    desc: "Flex is a fintech reshaping how Americans pay rent. I lead design on the hero product — Rent — driving initiatives across growth, pricing, and the core experience. New case study dropping soon.",
+    tags: ["FLEX", "ONBOARDING", "EXPERIMENTATION"],
+    title: "Reimagining Onboarding Search",
+    titleEm: "Through Experimentation.",
+    desc: "Flex onboarding hinged on one fragile interaction: property search. I led the UX strategy to replace legacy property-name lookup with a residential address autocomplete experience, then chased the result through the infrastructure underneath it.",
     metrics: [
-      { n: "IN FLIGHT", l: "Case study in progress" },
-      { n: "2026", l: "Target publish" },
+      { n: "+17.68%", l: "Bill connection lift vs. control" },
+      { n: "+4.42%", l: "Incremental bill connections (absolute lift)" },
+      { n: "+204%", l: "Autocomplete selection (25% to 76%)" },
     ],
     flex: true,
-    locked: true,
   },
   {
     id: "nwx",
@@ -201,32 +201,67 @@ const CASE_DETAILS = {
     ],
   },
   flex: {
-    kicker: "CASE STUDY / 00 — IN FLIGHT",
-    title: "Currently at Flex,",
-    titleEm: "leading design on Rent.",
+    kicker: "CASE STUDY / 00",
+    title: "Reimagining Onboarding Search",
+    titleEm: "Through Experimentation.",
     meta: [
-      { k: "Role", v: "Design Leader" },
-      { k: "Timeline", v: "2025 — present" },
-      { k: "Team", v: "TBD" },
-      { k: "Status", v: "Coming soon" },
+      { k: "Role", v: "Sr. Director, Product Design" },
+      { k: "Timeline", v: "Multi-phase experiment" },
+      { k: "Scope", v: "Onboarding UX" },
     ],
+    gallery: {
+      before: [
+        { src: "assets/flex-before.png", label: "Before: property-name search" },
+      ],
+      after: [
+        { src: "assets/flex-after-1.png", label: "After: search by address" },
+        { src: "assets/flex-after-2.png", label: "After: autocomplete results" },
+      ],
+    },
     metrics: [
-      { n: "SOON", l: "Metrics are in-flight" },
-      { n: "2026", l: "Target publish" },
-      { n: "∞", l: "Appetite for harder problems" },
+      { n: "+17.68%", l: "Bill connection lift vs. control" },
+      { n: "+4.42%", l: "Incremental bill connections (absolute lift)" },
+      { n: "+204%", l: "Autocomplete selection (25% to 76%)" },
     ],
     sections: [
       {
         k: "The Problem",
-        v: ["Placeholder. I'll fill this in with the real story from my work at Flex — the problem we took on, the surface area it touched, and why it mattered."],
+        v: [
+          "At Flex, onboarding performance was tightly tied to one critical interaction: property search. Before users could activate Flex or connect bills, they first had to successfully identify where they lived.",
+          "The existing flow relied on property-name search, a system that regularly conflicted with how real users think. Most renters don't know the official leasing-system name of their building; they know their address. That mismatch produced a funnel full of friction: low match rates, heavy reliance on exact naming, incorrect biller routing, unexpectedly high manual-entry rates, and matching failures driven by data inconsistencies across systems.",
+          "The hypothesis was straightforward: if onboarding search aligned with how users naturally think about their home address, bill-connection rates would improve. The operational complexity behind that seemingly simple UX change was enormous.",
+        ],
       },
       {
         k: "The Approach",
-        v: ["Placeholder. The shape of the team, the bets we made, the systems and products we stood up, and what we chose to leave on the table."],
+        v: [
+          "As Senior Director of Product Design, I led the UX strategy for a large-scale onboarding experimentation initiative, replacing legacy property-name search with a residential address autocomplete experience powered by Smarty Streets. The work spanned UX strategy, experimentation design, behavioral analysis, cross-functional systems coordination, and rapid iteration in production.",
+          "We reframed the experience away from recall (\"what is the exact name of my apartment complex?\") toward recognition (\"start typing your address\"). The new flow introduced residential address autocomplete, faster feedback loops, simplified recovery paths, smarter result handling and deduplication, and latency optimizations for mobile. We ramped progressively across onboarding traffic (25%, then 50%, then 100% exposure) before settling into a 50/50 control-treatment split.",
+        ],
+      },
+      {
+        k: "The UX Insight",
+        v: [
+          "Within days of launch, behavioral data told a story the funnel metrics hadn't. 51% of treatment users were bypassing autocomplete entirely. They were selecting \"Enter address manually,\" and 90% of those manual entries matched what the user had already typed into the autocomplete.",
+          "The issue wasn't that search results were technically failing. The issue was that users didn't trust the results enough to select them.",
+          "That reframed the entire roadmap. I led a rapid UX optimization sprint focused on confidence and behavioral guidance: reducing the prominence of manual-entry paths, removing lower-performing \"Use My Location\" patterns, deduplicating autocomplete results, improving keyboard interaction, and optimizing perceived latency with debounce and caching. The goal was to reduce hesitation, not just surface results.",
+        ],
+      },
+      {
+        k: "When Better UX Exposed Infrastructure",
+        v: [
+          "As exposure expanded, the data became contradictory. FA bill-connection rates improved while DI rates declined, and activation fluctuated unexpectedly. Rather than treat it as a funnel optimization problem, I helped drive a deeper systems investigation across Product, Billing, Infrastructure, and Data Science.",
+          "The findings surfaced hidden operational issues: address normalization mismatches (\"DANIA BEACH\" vs. \"Dania\"; \"Queen Creek\" vs. \"San Tan Valley\"), property-index drift, parsing inconsistencies, properties appearing in one index but not another, synchronization gaps between services, and an Amplitude experiment-assignment race condition that was assigning users to control before their property data had fully synced (effectively masking the real impact of the experiment).",
+          "Once the race condition was fixed, the picture changed dramatically. Autocomplete selection jumped from 25% to 76%. Manual-only entry dropped from 50% to 8%. \"Should Be DI\" misrouting fell from 22.3% to 1.6%, and \"Could Be DI\" misrouting from 60.8% to 13.6%.",
+        ],
       },
       {
         k: "The Outcome",
-        v: ["Placeholder. Numbers, narrative, and the honest version of what worked and what I'd do differently."],
+        v: [
+          "Following the infrastructure and UX fixes, the onboarding experiment delivered statistically significant improvements across the funnel: +17.68% bill connections, +18.17% applications, +17.14% UW completions, +18.01% approvals, +16.90% payment connections, +17.32% signups, and +23.32% M0 signups versus control.",
+          "Net of all of it: +4.42% incremental bill connections (absolute lift), a major reduction in manual-entry dependency, and stronger alignment between user intent and the backend matching systems. The work also expanded into multivariate search experiments, unit-number optimization flows, Smarty-standardized address normalization, and a daily automated address-enrichment pipeline, with prefill match rates above 90% across most DI partners.",
+          "The takeaway I keep coming back to: great UX work doesn't just improve interfaces. It reveals and strengthens the systems behind them.",
+        ],
       },
     ],
   },

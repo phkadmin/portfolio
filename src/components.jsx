@@ -106,6 +106,7 @@ function Reveal({ children, delay = 0, as = "div", className = "", ...rest }) {
 
 // ---------- Metric counter (animated on reveal) ----------
 function Metric({ n, l }) {
+  // just render value — n can contain currency/percent/commas
   return (
     <div className="metric">
       <span className="n serif">{n}</span>

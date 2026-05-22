@@ -54,6 +54,39 @@ function CaseStudy({ id, go }) {
           </div>
         ))}
 
+        {d.gallery ? (
+          <div className="cs-ba">
+            <div className="cs-ba-head">
+              <div className="k">Before &amp; After</div>
+              <div className="v">From property-name recall to address recognition.</div>
+            </div>
+            <div className="cs-ba-grid">
+              <div className="cs-ba-col before">
+                <div className="cs-ba-label"><span className="dot"></span>Before</div>
+                <div className="cs-ba-frames single">
+                  {d.gallery.before.map((g, i) => (
+                    <figure className="cs-ba-frame" key={i}>
+                      <img src={g.src} alt={g.label} />
+                      <figcaption>{g.label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+              <div className="cs-ba-col after">
+                <div className="cs-ba-label"><span className="dot accent"></span>After</div>
+                <div className="cs-ba-frames double">
+                  {d.gallery.after.map((g, i) => (
+                    <figure className="cs-ba-frame" key={i}>
+                      <img src={g.src} alt={g.label} />
+                      <figcaption>{g.label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         <div className="cs-next" onClick={() => go(`cs:${next.id}`)}>
           <div>
             <div className="small">Next Case Study →</div>
