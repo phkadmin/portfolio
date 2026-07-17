@@ -214,8 +214,8 @@ const CASE_DETAILS = {
         { src: "assets/flex-before.png", label: "Before: property-name search" },
       ],
       after: [
-        { src: "assets/flex-after-1.png", label: "After: search by address" },
-        { src: "assets/flex-after-2.png", label: "After: autocomplete results" },
+        { src: "assets/flex-after-2.png", label: "After: search by address" },
+        { src: "assets/flex-after-1.png", label: "After: autocomplete results" },
       ],
     },
     metrics: [
